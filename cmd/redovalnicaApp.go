@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/markokroselj/redovalnica-app/redovalnica"
+	"github.com/urfave/cli/v3"
 )
 
 func main() {
