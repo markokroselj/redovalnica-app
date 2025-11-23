@@ -1,13 +1,16 @@
+//Package redovalnica provides a system to manage Student grades.
 package redovalnica
 
 import "fmt"
 
+//Student represents a single Student
 type Student struct {
 	Ime     string
 	Priimek string
 	Ocene   []int
 }
 
+//DodajOceno adds a new grade to a student 
 func DodajOceno(studenti map[string]Student, vpisnaStevilka string, ocena int) {
 	if ocena < 0 || ocena > 10 {
 		fmt.Printf("Ocena %d ni v ustreznem območju [0-10]!\n", ocena)
@@ -25,6 +28,7 @@ func DodajOceno(studenti map[string]Student, vpisnaStevilka string, ocena int) {
 	studenti[vpisnaStevilka] = s
 }
 
+//povprecje calculates average grade for a given student
 func povprecje(studenti map[string]Student, vpisnaStevilka string) float64 {
 	student, ok := studenti[vpisnaStevilka]
 
@@ -44,6 +48,7 @@ func povprecje(studenti map[string]Student, vpisnaStevilka string) float64 {
 	return sum / float64(len(student.Ocene))
 }
 
+//IzpisRedovalnice prints out all the students and their grades
 func IzpisRedovalnice(studenti map[string]Student) {
 	fmt.Println("\nREDOVALNICA")
 
@@ -54,6 +59,7 @@ func IzpisRedovalnice(studenti map[string]Student) {
 	fmt.Println()
 }
 
+//IzpisiKoncniUspeh prints out final success for each student
 func IzpisiKoncniUspeh(studenti map[string]Student) {
 	for vpisna, student := range studenti {
 
